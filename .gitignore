@@ -1,3 +1,9 @@
+#build direectory
+build-*
+
+#mac crap
+DS_Store
+
 # Compiled Object files
 *.slo
 *.lo
