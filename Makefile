@@ -11,3 +11,7 @@ BOARD_TAG    = pro328
 
 include arduino-mk/Arduino.mk
 
+
+install:
+	avrdude -v -p atmega328p -c arduino -P $(ARDUINO_PORT) -b57600 -U build-pro328/boot-duino.hex
+
