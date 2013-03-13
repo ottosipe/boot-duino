@@ -3,8 +3,8 @@ boot-duino
 
 Arduino-based research project at the University of Michigan. Focusing on an open-source solution to gait and posture analysis for soldiers in the field.
 
-Fuses: [link](http://www.engbedded.com/fusecalc/)
-`avrdude -b19200 -P usb -c avrisp2 -p m328p -U lfuse:w:0x62:m -U hfuse:w:0xd9:m -U efuse:w:0x07:m`
+Fuses: [arduino fuses](http://www.codingwithcody.com/2011/04/arduino-default-fuse-settings/) [fuse calc](http://www.engbedded.com/fusecalc/)
+`avrdude -b19200 -P usb -c avrisp2 -p m328p -U lfuse:w:0xff:m -U hfuse:w:0xda:m -U efuse:w:0x05:m`
 
 Bootloader:
 `avrdude -b19200 -P usb -c avrisp2 -p m328p -v -e -U flash:w:bootloader.hex -U lock:w:0x0F:m`
@@ -19,9 +19,9 @@ Program Upload via AVRisp mkII:
 `avrdude -v -p m328p -c avrisp2 -P usb -b57600 -U build-pro328/boot-duino.hex`
 
 Bluetooth Settings:
-`ST,255` 	- command timer
-`SU,57` 	- baud rate 57000
-`S~,3` 		- Set Modem Profile 
+`ST,255` 	- command timer  
+`SU,57` 	- baud rate 57000  
+`S~,3` 		- Set Modem Profile   
 
 ----
 
