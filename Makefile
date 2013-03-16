@@ -1,7 +1,9 @@
 ARDUINO_DIR   = /Applications/Arduino.app/Contents/Resources/Java
 ARDMK_DIR     = ./arduino-mk
+USER_LIB_PATH = /Users/ottosipe/Documents/Arduino/Libraries
+ARDUINO_LIBS  = SdFat I2Cdev MPU6050
 
-AVRDUDE_ARD_BAUDRATE = 57600
+AVRDUDE_ARD_BAUDRATE = 38400
 ARDUINO_PORT = /dev/tty.FireFly*
 
 #MCU = atmega328p
@@ -11,7 +13,8 @@ BOARD_TAG    = pro328
 
 include arduino-mk/Arduino.mk
 
+install: all
+	avrdude -v -p m328p -c avrisp2 -P usb -b57600 -U build-pro328/boot-duino.hex
 
-install:
-	avrdude -v -p atmega328p -c arduino -P $(ARDUINO_PORT) -b57600 -U build-pro328/boot-duino.hex
-
+fuses: 
+	avrdude -b19200 -P usb -c avrisp2 -p m328p -U lfuse:w:0xff:m -U hfuse:w:0xda:m -U efuse:w:0x05:m

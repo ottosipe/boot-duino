@@ -20,8 +20,14 @@ Program Upload via AVRisp mkII:
 
 Bluetooth Settings:
 `ST,255` 	- command timer  
-`SU,57` 	- baud rate 57000  
+`SU,38` 	- baud rate 38400  
 `S~,3` 		- Set Modem Profile   
+
+----
+
+## Hardware Notes
+
+- Chip Select Pin : D5
 
 ----
 
