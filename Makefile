@@ -1,18 +1,17 @@
 ARDUINO_DIR   			= /Applications/Arduino.app/Contents/Resources/Java
 ARDMK_DIR     			= ./arduino-mk
 USER_LIB_PATH 			= ./libraries
-ARDUINO_LIBS  			= SdFat Wire I2CDev MPU6050
+ARDUINO_LIBS  			= SdFat Wire Wire/utility I2CDev MPU6050
 AVRDUDE_ARD_BAUDRATE 	= 38400
 ARDUINO_PORT 			= /dev/tty.FireFly*
 
-#MCU = atmega328p
-#F_CPU = 8000000
-
-BOARD_TAG    = pro328
+#MCU		 	= atmega328p
+#F_CPU 			= 8000000
+BOARD_TAG		= pro328
 
 include arduino-mk/Arduino.mk
 
-progam: all
+program: all
 	avrdude -v -p m328p -c avrisp2 -P usb -b57600 -U build-pro328/boot-duino.hex
 
 bootload:
