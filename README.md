@@ -1,41 +1,33 @@
 boot-duino
 ==========
 
-Arduino-based research project at the University of Michigan. Focusing on an open-source solution to gait and posture analysis for soldiers in the field.
+Arduino-based research project at the University of Michigan. Focusing on an open-source solution to gait and posture analysis.
 
-Fuses: [arduino fuses](http://www.codingwithcody.com/2011/04/arduino-default-fuse-settings/) [fuse calc](http://www.engbedded.com/fusecalc/)
-`avrdude -b19200 -P usb -c avrisp2 -p m328p -U lfuse:w:0xff:m -U hfuse:w:0xda:m -U efuse:w:0x05:m`
+## Programming
 
-Bootloader:
-`avrdude -b19200 -P usb -c avrisp2 -p m328p -v -e -U flash:w:bootloader.hex -U lock:w:0x0F:m`
+- Program Upload via BT: `make upload`
+- Program Upload via AVRisp mkII: `make program`
+- Bootloader: `make bootload`
+- Fuses: `make fuses`
 
-To Build and Upload:  
-`make upload`
+----
 
-Program Upload via BT (when `make upload` fails):
-`avrdude -v -p atmega328p -c arduino -P /dev/tty.FireFly* -b57600 -U build-pro328/boot-duino.hex`
-
-Program Upload via AVRisp mkII:
-`avrdude -v -p m328p -c avrisp2 -P usb -b57600 -U build-pro328/boot-duino.hex`
-
-Bluetooth Settings:
+Bluetooth Settings:  
 `ST,255` 	- command timer  
 `SU,38` 	- baud rate 38400  
 `S~,3` 		- Set Modem Profile   
 
+Fuse Info: [Arduino Fuses](http://www.codingwithcody.com/2011/04/arduino-default-fuse-settings/), [Fuse Calculator](http://www.engbedded.com/fusecalc/)
+
+
 ----
 
-## Hardware Notes
+Hardware Notes
 
 - Chip Select Pin : D5
 
 ----
 
-Resources and Libraries:
- 
-- [I2CDev](https://github.com/jrowberg/i2cdevlib)
-- [SDFat](http://code.google.com/p/sdfatlib/downloads/list)
-- [Arduino-Makefile](https://github.com/mjoldfield/Arduino-Makefile)
 
 Install Arduino-Makefile:  
 
@@ -44,3 +36,10 @@ sudo perl -MCPAN -e shell
 	install YAML
 	install Device::SerialPort
 ```
+
+
+## Resources and Libraries:
+ 
+- [I2CDev](https://github.com/jrowberg/i2cdevlib)
+- [SDFat](http://code.google.com/p/sdfatlib/downloads/list)
+- [Arduino-Makefile](https://github.com/mjoldfield/Arduino-Makefile)
