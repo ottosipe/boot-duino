@@ -1,6 +1,8 @@
-//#include <I2Cdev>
 #include <Arduino.h>
 #include <SdFat.h>
+#include <Wire.h>
+#include <I2Cdev.h>
+
 
 const int chipSelect = 5;
 SdFat sd;

@@ -1,10 +1,9 @@
-ARDUINO_DIR   = /Applications/Arduino.app/Contents/Resources/Java
-ARDMK_DIR     = ./arduino-mk
-USER_LIB_PATH = /Users/ottosipe/Documents/Arduino/Libraries
-ARDUINO_LIBS  = SdFat I2Cdev MPU6050
-
-AVRDUDE_ARD_BAUDRATE = 38400
-ARDUINO_PORT = /dev/tty.FireFly*
+ARDUINO_DIR   			= /Applications/Arduino.app/Contents/Resources/Java
+ARDMK_DIR     			= ./arduino-mk
+USER_LIB_PATH 			= ./libraries
+ARDUINO_LIBS  			= SdFat Wire I2CDev MPU6050
+AVRDUDE_ARD_BAUDRATE 	= 38400
+ARDUINO_PORT 			= /dev/tty.FireFly*
 
 #MCU = atmega328p
 #F_CPU = 8000000

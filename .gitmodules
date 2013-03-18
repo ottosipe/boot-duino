@@ -1,0 +1,6 @@
+[submodule "libraries/sdfatlib"]
+	path = libraries/sdfatlib
+	url = git@github.com:frasermac/sdfatlib.git
+[submodule "libraries/i2cdevlib"]
+	path = libraries/i2cdevlib
+	url = git@github.com:jrowberg/i2cdevlib.git
