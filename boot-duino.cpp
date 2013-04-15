@@ -1,5 +1,6 @@
 // use verbose logging
 //#define DEBUG
+#define SD_WRITE
 
 #include "board.h"
 
@@ -11,7 +12,7 @@ void setup() {
 	Serial.begin(38400);
 	board.start_imu();
 	// wait to start the read
-	board.wait_for_key();
+	//board.wait_for_key();
 
 }
 

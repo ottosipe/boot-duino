@@ -12,7 +12,7 @@ BOARD_TAG		= pro328
 include arduino-mk/Arduino.mk
 
 program: all
-	avrdude -v -p m328p -c avrisp2 -P usb -b57600 -U build-pro328/boot-duino.hex
+	avrdude -v -p m328p -c avrisp2 -P usb -V -b57600 -U build-pro328/boot-duino.hex
 
 bootload:
 	avrdude -b19200 -P usb -c avrisp2 -p m328p -v -e -U flash:w:bootloader.hex -U lock:w:0x0F:m
