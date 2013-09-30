@@ -3,6 +3,11 @@ boot-duino
 
 Arduino-based research project at the University of Michigan. Focusing on an open-source solution to gait and posture analysis.
 
+## Project Status as of Sept. 30, 2013
+- Hardware 3.0 is stable
+- Software can collect, save, or transmit IMU data.
+- Case is designed and being tested.
+
 ## Programming
 
 - Program Upload via BT: `make upload`

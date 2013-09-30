@@ -1,7 +1,7 @@
 # mac:
 ARDUINO_DIR   			= /Applications/Arduino.app/Contents/Resources/Java
 # linux:
-#ARDUINO_DIR   = /usr/share/arduino
+#ARDUINO_DIR   			= /usr/share/arduino
 ARDMK_DIR     			= ./arduino-mk
 USER_LIB_PATH 			= ./libraries
 ARDUINO_LIBS  			= SdFat Wire Wire/utility I2CDev MPU6050

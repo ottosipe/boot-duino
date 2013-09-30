@@ -6,6 +6,8 @@ ArduinoOutStream cout(Serial);
 const int chipSelect = 5;
 #define LED_PIN 13
 
+#define SD_WRITE
+
 volatile bool mpuInterrupt = false;     
 // indicates whether MPU interrupt pin has gone high
 void dmpDataReady() {
@@ -13,6 +15,9 @@ void dmpDataReady() {
 }
 
 Board::Board(MPU6050 *imu_in) : imu(imu_in) {  
+
+
+    pinMode(chipSelect, OUTPUT);
 	//scales from datasheet don't change
 	scaleAccl = 417.53; //4096 / 9.81 - already shifted for m/s^2 units
 	scaleGyro = 32.8; // degrees per second
@@ -54,6 +59,7 @@ void Board::start_imu() {
 
 	#ifdef SD_WRITE
 	setup_card();
+    file.println("--------------------------");
 	#endif
 };
 
@@ -107,10 +113,30 @@ void Board::loop() {
         imu->dmpGetGravity(&gravity, &q);
         imu->dmpGetLinearAccel(&aaReal, &aa, &gravity);
         imu->dmpGetLinearAccelInWorld(&aaWorld, &aaReal, &q);
+        cout << aa.x / scaleAccl << "," 
+        	<< aa.y / scaleAccl << "," 
+        	<< aa.z / scaleAccl << ",";
+
         cout << aaWorld.x / scaleAccl << "," 
-        	<< aaWorld.y / scaleAccl << "," 
-        	<< aaWorld.z / scaleAccl << ";" << endl;
+            << aaWorld.y / scaleAccl << "," 
+            << aaWorld.z / scaleAccl << ";" << endl;
     
+        #ifdef SD_WRITE
+        file.print(aa.x / scaleAccl);
+        file.print(",");
+        file.print(aa.y / scaleAccl);
+        file.print(",");
+        file.print(aa.z / scaleAccl);
+        file.print(",");
+
+        file.print(aaWorld.x / scaleAccl);
+        file.print(",");
+        file.print(aaWorld.y / scaleAccl);
+        file.print(",");
+        file.print(aaWorld.z / scaleAccl);
+        file.println(";");
+        #endif
+
         blinkState = !blinkState;
         digitalWrite(LED_PIN, blinkState);
     }
@@ -133,7 +159,7 @@ void Board::wait_for_key() {
 
 void Board::setup_card() {
 
-	if (!sd.begin(chipSelect, SPI_FULL_SPEED)) sd.initErrorHalt();
+	if (!sd.begin(chipSelect, SPI_HALF_SPEED)) sd.initErrorHalt();
 	if (!file.open("data.txt", O_RDWR | O_CREAT | O_AT_END)) {
 		sd.errorHalt("Opening data.txt failed!");
 	}

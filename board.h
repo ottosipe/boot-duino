@@ -13,7 +13,7 @@
 class Board {
 	MPU6050 *imu;
 	SdFat sd;
-	SdFile file;
+	SdFile file; // todo: switch to ostream
 
 	VectorInt16 accel;
 	VectorInt16 gyro;
